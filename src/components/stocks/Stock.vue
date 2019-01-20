@@ -17,12 +17,17 @@
             <v-text-field 
                 label="quantity"
                 outline
-                type="number" min="1" max="10"
+                v-model="quantity"
+                type="number"
                 class="mt-0"
                 autofocus >
             </v-text-field>
         </v-flex>
-            <v-btn color=primary depressed large class="mt-3 secondary--text subheading" >Buy Now</v-btn>
+            <v-btn 
+            :disabled="quantity<=0" 
+            color=primary depressed large
+            @click ="buyStock" 
+            class="mt-3 secondary--text subheading" >Buy Now</v-btn>
         </v-layout>
     </v-card-actions>
   </v-card>
@@ -30,7 +35,23 @@
 
 <script>
 export default {
-    props: ['stock']
+    data(){
+        return {
+            quantity: 0
+        }
+    },
+    props: ['stock'],
+    methods: {
+        buyStock(){
+            const order= {
+                stockid: this.stock.id,
+                quantity: this.quantity,
+                price: this.stock.price
+            }
+            console.log(order);
+            this.quantity = null;
+        }
+    }
 }
 </script>
 
