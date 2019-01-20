@@ -1,19 +1,19 @@
 <template>
-  <v-toolbar >
-    <v-toolbar-side-icon></v-toolbar-side-icon>
-    <v-toolbar-title>Stock Trader</v-toolbar-title>
+  <v-toolbar color=primary >
+    <v-toolbar-side-icon class="title secondary--text"  ></v-toolbar-side-icon>
+    <v-toolbar-title class="headline text-uppercase secondary--text" >Stock Trader</v-toolbar-title>
         <v-toolbar-items>
-        <v-btn flat to="/portfolio">Portfolio</v-btn>
-        <v-btn flat to="/stocks">Stocks</v-btn>
+        <v-btn flat class="title secondary--text" to="/portfolio">Portfolio</v-btn>
+        <v-btn flat class="title secondary--text"  to="/stocks">Stocks</v-btn>
         </v-toolbar-items>
     <v-spacer></v-spacer>
     <v-toolbar-items class="hidden-sm-and-down">
-      <v-btn flat >End Day</v-btn>
+      <v-btn flat class="title secondary--text"  >End Day</v-btn>
       
       <v-menu :nudge-width="80">
-        <v-toolbar-title slot="activator">
-        <v-btn flat >Save & Load</v-btn>
-          <v-icon >arrow_drop_down</v-icon>
+        <v-toolbar-title slot="activator"  >
+        <v-btn flat class="title secondary--text"  >Save & Load</v-btn>
+          <v-icon color=secondary >arrow_drop_down</v-icon>
         </v-toolbar-title>
         <v-list>
           <v-list-tile

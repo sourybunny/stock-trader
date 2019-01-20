@@ -1,8 +1,14 @@
 <template>
-  <v-app>
+  <v-app dark>
     <app-header></app-header>
     <v-content>
-      <router-view></router-view>
+          <v-container>
+        <v-layout>
+            <v-flex xs12>
+                <router-view></router-view>
+            </v-flex>
+        </v-layout>
+    </v-container>
     </v-content>
   </v-app>
 </template>
@@ -21,3 +27,4 @@ export default {
   }
 }
 </script>
+
