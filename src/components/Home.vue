@@ -1,7 +1,7 @@
 <template>
     <div>
         
-        <h1>funds: {{funds}}</h1>
+        <h1>funds: {{funds | currency}}</h1>
     </div>
 </template>
 

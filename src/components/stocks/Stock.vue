@@ -8,7 +8,7 @@
     </v-card-title>
 
     <v-card-text class="headline ml-3 font-weight-bold">
-        {{stock.price}}
+        {{stock.price | currency}}
     </v-card-text>
 
     <v-card-actions>
@@ -24,10 +24,10 @@
             </v-text-field>
         </v-flex>
             <v-btn 
-            :disabled="quantity<=0" 
+            :disabled="insufficientFunds||quantity<=0" 
             color=primary depressed large
             @click ="buyStock" 
-            class="mt-3 secondary--text subheading" >Buy Now</v-btn>
+            class="mt-3 mr-3 secondary--text subheading" >{{insufficientFunds? 'Insufficient funds':'Buy Stock'}}</v-btn>
         </v-layout>
     </v-card-actions>
   </v-card>
@@ -38,6 +38,15 @@ export default {
     data(){
         return {
             quantity: 0
+        }
+    },
+
+    computed: {
+        funds(){
+            return this.$store.getters.funds;
+        },
+        insufficientFunds(){
+            return this.quantity*this.stock.price > this.funds
         }
     },
     props: ['stock'],

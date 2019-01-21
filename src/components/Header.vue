@@ -26,6 +26,7 @@
           </v-list-tile>
         </v-list>
       </v-menu>
+      <v-btn color="secondary" class="primary--text title">funds: {{funds | currency}}</v-btn>
     </v-toolbar-items>
   </v-toolbar>
 </template>
@@ -36,6 +37,11 @@
       items: [
         'Save', 'Load'
       ]
-    })
+    }),
+    computed: {
+      funds(){
+        return this.$store.getters.funds;
+      }
+    }
   }
 </script>

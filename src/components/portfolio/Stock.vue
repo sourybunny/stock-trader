@@ -9,7 +9,7 @@
     </v-card-title>
 
     <v-card-text class="headline ml-3 font-weight-bold">
-        {{stock.price}} | {{stock.quantity}}
+        {{stock.price | currency}} | {{stock.quantity}}
     </v-card-text>
 
     <v-card-actions>
@@ -25,10 +25,10 @@
             </v-text-field>
         </v-flex>
             <v-btn 
-            :disabled="quantity<=0" 
+            :disabled="insufficientQuantity || quantity<=0" 
             color=primary depressed large
             @click ="sellStock" 
-            class="mt-3 secondary--text subheading" >Sell Stock</v-btn>
+            class="mt-3 mr-3 secondary--text subheading" >{{insufficientQuantity? 'Insufficient Quantity':'Sell Stock'}}</v-btn>
         </v-layout>
     </v-card-actions>
   </v-card>
@@ -42,7 +42,12 @@ export default {
             quantity: 0
         }
     },
-    props: ['stock'],
+    props:['stock'],
+    computed: {
+        insufficientQuantity(){
+            return this.quantity > this.stock.quantity;
+        }
+    },
     methods: {
         sellStock(){
             const order= {
@@ -50,9 +55,10 @@ export default {
                 quantity: this.quantity,
                 price: this.stock.price
             }
+            
             console.log(order);
             this.$store.dispatch('sellStock', order);
-            
+            this.quantity = 0;
         }
     }
 }
