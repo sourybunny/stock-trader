@@ -3,6 +3,7 @@
     <v-toolbar-side-icon class="title secondary--text"  ></v-toolbar-side-icon>
     <v-toolbar-title class="headline text-uppercase secondary--text" >Stock Trader</v-toolbar-title>
         <v-toolbar-items>
+        <v-btn flat class="title secondary--text" to="/">Home</v-btn>
         <v-btn flat class="title secondary--text" to="/portfolio">Portfolio</v-btn>
         <v-btn flat class="title secondary--text"  to="/stocks">Stocks</v-btn>
         </v-toolbar-items>
